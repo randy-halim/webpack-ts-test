@@ -1,8 +1,10 @@
-const path = require('path');
 const webpack = require('webpack');
+const { resolve } = require('path');
 
 /** @type {webpack.Configuration} */
-const config = {
+module.exports = {
+	mode: process.env.NODE_ENV || 'development',
+	context: resolve(__dirname),
 	entry: './index.ts',
 	module: {
 		rules: [{
@@ -12,6 +14,5 @@ const config = {
 		}],
 	},
 	resolve: { extensions: ['.tsx', '.ts', '.js'] },
-	output: { path: path.resolve(__dirname, 'dist') },
-	mode: 'development'
+	output: { path: resolve(__dirname, 'dist') }
 };
